@@ -1,0 +1,39 @@
+<h1>Enter Name of any Breaking Bad Character</h1><br>
+<form method="GET">
+    <input type="text" class="textbox" name="character" placeholder="Walter White">
+    <button type="submit">Find Details</button>
+</form>
+
+
+{% if key %}
+<style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 5px;
+      text-align: left;    
+    }
+</style>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>DOB</th>
+        <th>Occupation</th>
+        <th>Nickname</th>
+        <th>Portrayed By</th>
+        <th>Quotes</th>
+    </tr>
+    {% for x in key %}
+    <tr>
+        <td>{{x.name}}</td>
+        <td>{{x.dob}}</td>
+        <td>{{x.occupation}}</td>
+        <td>{{x.nickname}}</td>
+        <td>{{x.portrayed}}</td>
+        <td><a href="{% url 'quotes' x.name %}">Get Quotes</a></td>
+    </tr>
+    {% endfor %}   
+</table>
+{% endif %}
